@@ -1,0 +1,1 @@
+# A dockeried full stack application with MySQL DB, koa, react
