@@ -1,0 +1,13 @@
+{
+  "name": "database",
+  "packageManager": "yarn@4.0.1",
+  "scripts": {
+    "seedDB": "ts-node scripts/seedDB.ts"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.2"
+  },
+  "dependencies": {
+    "mysql2": "^3.9.6"
+  }
+}

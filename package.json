@@ -5,8 +5,9 @@
   "private": true,
   "packageManager": "yarn@4.0.1",
   "workspaces": [
-    "server",
-    "client"
+    "client",
+    "database",
+    "server"
   ],
   "scripts": {
     "start": "node dist/app.js",

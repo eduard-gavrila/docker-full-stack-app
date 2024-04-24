@@ -1,0 +1,39 @@
+version: '3.1'
+
+services:
+  # mysql database
+  mysql:
+    image: mysql:8.3.0
+    container_name: mysql-db
+    restart: always
+    ports:
+      - '3306:3306'
+    volumes:
+      - ./database/data:/var/lib/mysql
+    networks:
+      - full-stack
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: jokes
+      MYSQL_USER: api
+      MYSQL_PASSWORD: api-pw
+
+  # rest API
+  # api:
+  #   build:
+  #     context: .
+  #     dockerfile: ./server/Dockerfile
+  #   container_name: jokes-api
+  #   restart: always
+  #   ports:
+  #     - '3000:3000'
+  #   networks:
+  #     - full-stack
+  #   depends_on:
+  #     - mysql
+
+  # TODO frontend
+
+networks:
+  full-stack:
+    driver: bridge

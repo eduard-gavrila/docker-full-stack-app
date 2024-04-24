@@ -1,7 +1,11 @@
 .PHONY: start
 start:
-	docker-compose -f ./database/docker-compose.yml up
+	docker-compose up -d
 
 .PHONY: stop
 stop:
-	docker-compose -f ./database/docker-compose.yml down
+	docker-compose down
+
+.PHONY: build-api
+build-api:
+	docker build -t jokes-api -f ./server/Dockerfile . --progress=plain

@@ -607,6 +607,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"database@workspace:database":
+  version: 0.0.0-use.local
+  resolution: "database@workspace:database"
+  dependencies:
+    mysql2: "npm:^3.9.6"
+    ts-node: "npm:^10.9.2"
+  languageName: unknown
+  linkType: soft
+
 "debug@npm:4, debug@npm:^4.3.2, debug@npm:^4.3.4":
   version: 4.3.4
   resolution: "debug@npm:4.3.4"
