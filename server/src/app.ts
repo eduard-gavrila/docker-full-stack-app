@@ -11,13 +11,17 @@ import {
 const app = new Koa()
 const router = new Router()
 
+const hostname = process.env.DB_URL || 'localhost'
+const port = process.env.DB_PORT || 3306
+
+
 app.use(async (ctx, next) => {
   if (!app.context.db) {
     console.log('Getting the DB connection')
     try {
       const dbConnection = await getDBConnection({
-        host: 'localhost',
-        port: 3306,
+        host: hostname,
+        port: +port,
         user: 'root',
         password: 'root',
         database: 'jokes',
@@ -25,7 +29,7 @@ app.use(async (ctx, next) => {
 
       app.context.db = dbConnection
 
-      next()
+      await next()
     } catch (error) {
       ctx.status = 500
       ctx.body = 'Error connecting to the database'

@@ -10,8 +10,6 @@ services:
       - '3306:3306'
     volumes:
       - ./database/data:/var/lib/mysql
-    networks:
-      - full-stack
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: jokes
@@ -19,21 +17,18 @@ services:
       MYSQL_PASSWORD: api-pw
 
   # rest API
-  # api:
-  #   build:
-  #     context: .
-  #     dockerfile: ./server/Dockerfile
-  #   container_name: jokes-api
-  #   restart: always
-  #   ports:
-  #     - '3000:3000'
-  #   networks:
-  #     - full-stack
-  #   depends_on:
-  #     - mysql
+  api:
+    build:
+      context: .
+      dockerfile: ./server/Dockerfile
+    container_name: jokes-api
+    restart: always
+    ports:
+      - '3001:3000'
+    environment:
+      - DB_URL=mysql-db
+      - DB_PORT=3306
+    depends_on:
+      - mysql
 
   # TODO frontend
-
-networks:
-  full-stack:
-    driver: bridge

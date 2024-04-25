@@ -11,11 +11,7 @@ RUN yarn
 
 COPY server/src src
 
-RUN ls -la
-
 RUN yarn build
-
-RUN
 
 EXPOSE 3000
 
